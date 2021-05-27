@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block dashboard %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">New Question Add</h1>
+</div>
+<form method="post">
+  {% csrf_token %}
+  <div class="form-row row">
+    {% for field in form %}
+    <div class="col-md-4">
+      {{ field.errors }}
+      {{ field.label_tag }} {{ field }}
+      {% if field.help_text %}
+      <p class="help">{{ field.help_text|safe }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <input type="submit" class="btn btn-primary">
+</form>
+{% endblock %}
